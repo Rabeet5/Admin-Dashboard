@@ -5,17 +5,20 @@ import Login from "../firebase/login";
 import Signup from "../firebase/signup";
 import ProtectRoutes from "../Components/ProtectedRoute";
 
-function AllRouters(){
 
-    return<>
-    
-    <BrowserRouter>
-        <Routes>
-            <Route path="/dashboard/*" element={<ProtectRoutes Component={<Dashboard />}/>} /> 
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-        </Routes>
-    </BrowserRouter>
+function AllRouters() {
+
+    return <>
+
+        <BrowserRouter>
+            <Routes>
+                {/* <Route path="/dashboard/*" element={<ProtectRoutes Component={<Dashboard />} />} /> */}
+                <Route path="/dashboard/*" element={<Dashboard />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                
+            </Routes>
+        </BrowserRouter>
     </>
 
 }

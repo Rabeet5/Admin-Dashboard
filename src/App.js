@@ -1,17 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SMButton from './pages/Components/SMbutton';
 import AllRouters from './pages/screens/Allrouters';
+import SMSelect from './pages/Components/SMSelectBox';
 
-function App(props) {
+
+function App() {
   return (<>
-    
 
+    <SMSelect label='Select this' val='Rabeet'  /> <br />
     <AllRouters />
   </>
-    
-    
+
+
+
   );
 }
 

@@ -2,25 +2,26 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CheckAuthentication } from "../firebase/firebaseMethod";
 
-function ProtectRoutes({Component}){
+function ProtectRoutes({ Component }) {
+
 
     const navigate = useNavigate();
-    const [loader,setLoader] = useState(false)
-    useEffect(()=>{
+    const [loader, setLoader] = useState(false)
+    useEffect(() => {
         CheckAuthentication()
         setLoader(true)
-        .then((uid)=>{
-            console.log(uid,'User Logged in')
-        setLoader(false)
+            .then((uid) => {
+                console.log(uid, 'User Logged in')
+                setLoader(false)
 
-        })
-        .catch((err)=>{
-            setLoader(false)
-            console.log(err)
-            navigate('/login')
-        })
+            })
+            .catch((err) => {
+                setLoader(false)
+                console.log(err)
+                navigate('/login')
+            })
 
-    },[])
+    }, [])
 }
 
 export default ProtectRoutes;

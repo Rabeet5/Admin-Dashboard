@@ -119,7 +119,7 @@ const [log,setLog] = React.useState([{
               LogoutFromPage()
               .then(()=>{
                 console.log();
-                navigate='/login'
+                navigate='login'
               })
               .catch((err)=>{
                 console.log(err)

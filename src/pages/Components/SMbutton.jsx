@@ -7,7 +7,7 @@ function SMButton(props){
 
     return(
         <Button 
-        onclick={onclick} className={'p-2 m-2'}
+        className={'p-2 m-2'}
         variant="contained" >{label}</Button>
     )
 }
