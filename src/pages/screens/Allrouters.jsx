@@ -4,6 +4,7 @@ import Dashboard from "./DashboardScreens/dashboard";
 import Login from "../firebase/login";
 import Signup from "../firebase/signup";
 import ProtectRoutes from "../Components/ProtectedRoute";
+import Home from "./Home";
 
 
 function AllRouters() {
@@ -12,10 +13,10 @@ function AllRouters() {
 
         <BrowserRouter>
             <Routes>
-                {/* <Route path="/dashboard/*" element={<ProtectRoutes Component={<Dashboard />} />} /> */}
+                <Route path="/dashboard/*" element={<ProtectRoutes Component={Dashboard } />} />
                 <Route path="/dashboard/*" element={<Dashboard />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
+                <Route path="/login/*" element={<Login />} />
+                <Route path="/signup/*" element={<Signup />} />
                 
             </Routes>
         </BrowserRouter>

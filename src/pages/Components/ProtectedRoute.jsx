@@ -9,19 +9,21 @@ function ProtectRoutes({ Component }) {
     const [loader, setLoader] = useState(false)
     useEffect(() => {
         CheckAuthentication()
-        setLoader(true)
+        // setLoader(true)
             .then((uid) => {
                 console.log(uid, 'User Logged in')
-                setLoader(false)
+                // setLoader(false)
 
             })
             .catch((err) => {
-                setLoader(false)
+                // setLoader(false)
                 console.log(err)
                 navigate('/login')
             })
 
     }, [])
+
+    return<>{loader ? <h1>Loading..</h1>:<Component />}</>
 }
 
 export default ProtectRoutes;

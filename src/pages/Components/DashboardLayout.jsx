@@ -33,56 +33,56 @@ import { LogoutFromPage } from '../firebase/firebaseMethod';
 
 const drawerWidth = 240;
 
- function DashboardLayout(props) {
+function DashboardLayout(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [list,setList] = React.useState([
+  const [list, setList] = React.useState([
     {
-    name:'Messages',
-    route:'message',
-    icon:<MessageIcon />
+      name: 'Messages',
+      route: 'message',
+      icon: <MessageIcon />
     },
     {
-        name:'Notification',
-        route:'notify',
-        icon:<NotificationsNoneIcon />
+      name: 'Notification',
+      route: 'notify',
+      icon: <NotificationsNoneIcon />
     },
     {
-        name:'Feedback',
-        route:'feedback',
-        icon:<FeedbackIcon />
+      name: 'Feedback',
+      route: 'feedback',
+      icon: <FeedbackIcon />
     },
     {
-        name:'Comments',
-        route:'comments',
-        icon:<NotesIcon />
+      name: 'Comments',
+      route: 'comments',
+      icon: <NotesIcon />
     },
     {
-        name:'About',
-        route:'about',
-        icon:<InfoIcon />
+      name: 'About',
+      route: 'about',
+      icon: <InfoIcon />
     },
     {
-        name:'Post',
-        route:'post',
-        icon:<PostAddIcon />
+      name: 'Post',
+      route: 'post',
+      icon: <PostAddIcon />
     },
-    
-])
+
+  ])
 
 
-const [log,setLog] = React.useState([{
+  const [log, setLog] = React.useState([{
 
-  name:'Logout',
-  route:'login',
-  icon:<LogoutIcon />
-}])
-    
+    name: 'Logout',
+    route: 'login',
+    icon: <LogoutIcon />
+  }])
+
 
   const navigate = useNavigate()
-    const ChangeScreen = (route)=>{
+  const ChangeScreen = (route) => {
     navigate(route)
-    }
+  }
 
 
   const handleDrawerToggle = () => {
@@ -96,7 +96,7 @@ const [log,setLog] = React.useState([{
       <List>
         {list.map((x, index) => (
           <ListItem key={index} disablePadding
-          onClick={()=> ChangeScreen(x.route)}
+            onClick={() => ChangeScreen(x.route)}
           >
             <ListItemButton >
               <ListItemIcon>
@@ -113,20 +113,20 @@ const [log,setLog] = React.useState([{
       <List>
         {log.map((x, index) => (
           <ListItem key={index} disablePadding
-          onClick={()=> ChangeScreen(x.route)}
+            onClick={() => ChangeScreen(x.route)}
           >
-            <ListItemButton onClick={()=>{
+            <ListItemButton onClick={() => {
               LogoutFromPage()
-              .then(()=>{
-                console.log();
-                navigate='login'
-              })
-              .catch((err)=>{
-                console.log(err)
-              })
+                .then(() => {
+                  console.log();
+                  navigate('/login')
+                })
+                .catch((err) => {
+                  console.log(err)
+                })
             }} >
               <ListItemIcon>
-                                {x.icon}
+                {x.icon}
               </ListItemIcon>
               <ListItemText primary={x.name} />
             </ListItemButton>
@@ -134,7 +134,7 @@ const [log,setLog] = React.useState([{
         ))}
       </List>
       <Divider />
-     
+
     </div>
   );
 
@@ -204,15 +204,15 @@ const [log,setLog] = React.useState([{
         <Toolbar />
 
         <Routes>
-            <Route path='/comments' element={<Comments />} />
-            <Route path='/feedback' element={<Feeds />} />
-            <Route path='/message' element={<Message />} />
-            <Route path='/notify' element={<NotificationScreen />} />
-            <Route path='/post' element={<PostScreen />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/login' element={<Login />} />
+          <Route path='/comments' element={<Comments />} />
+          <Route path='/feedback' element={<Feeds />} />
+          <Route path='/message' element={<Message />} />
+          <Route path='/notify' element={<NotificationScreen />} />
+          <Route path='/post' element={<PostScreen />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/login/*' element={<Login />} />
         </Routes>
-        
+
       </Box>
     </Box>
   );

@@ -1,5 +1,5 @@
 import app from "./firebaseconfig";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import { getDatabase, set, ref, onValue, push } from "firebase/database";
 
 
@@ -65,7 +65,7 @@ let CheckAuthentication = () => {
                     resolve(uid)
                 }
                 else {
-                    reject('User not Logged in')
+                    reject()
                 }
             })
         })
@@ -73,9 +73,7 @@ let CheckAuthentication = () => {
 }
 
 let LogoutFromPage = () => {
-    return (
-        SignupUser(auth)
-    )
+    return signOut(auth)
 }
 
 let getDataFromDB = (nodename, id) => {

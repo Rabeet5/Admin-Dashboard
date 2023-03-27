@@ -1,19 +1,26 @@
 import { Button, TextField, Typography, Box } from "@mui/material";
 import { useState } from "react";
-import { LoginUser } from "./firebaseMethod";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { LoginUser, } from "./firebaseMethod";
+import Signup from "./signup";
+import { Link } from "@mui/material";
 
 function Login() {
 
   const [user, SetUser] = useState({});
-
+  const navigate = useNavigate();
   const [loader, SetLoader] = useState(false)
 
-  let Login = () => {
-    SetLoader(true)
 
+
+
+  let Login = () => {
+    
     LoginUser(user).then((res) => {
+      SetLoader(true)
       console.log(res,
         alert('User logged In'))
+      navigate('/dashboard/*')
     })
       .catch((err) => {
         SetLoader(false)
@@ -26,6 +33,8 @@ function Login() {
 
 
   return <>
+
+
     <Box
       sx={{ height: "100vh" }}
       className="d-flex justify-content-center align-items-center "
@@ -53,13 +62,22 @@ function Login() {
           >
             Login
           </Button>
+          <Box>
+            <Button
+                className="p-2 text-center m-3"
+                onClick={() => {
+                navigate('/signup')}}
+                variant='outlined' >Signup </Button>
+          </Box>
+
+
         </Box>
       </Box>
     </Box>
+    <Routes>
+      <Route path="/signup" element={<Signup />} />
+    </Routes>
   </>
-
-
-
 }
 
 export default Login;

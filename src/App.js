@@ -2,14 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AllRouters from './pages/screens/Allrouters';
-import SMSelect from './pages/Components/SMSelectBox';
-
+import Home from './pages/screens/Home';
 
 function App() {
   return (<>
 
-    <SMSelect label='Select this' val='Rabeet'  /> <br />
+   
+
     <AllRouters />
+
   </>
 
 

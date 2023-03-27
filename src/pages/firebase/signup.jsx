@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { Button, TextField, Typography, Box } from "@mui/material";
 import { SignupUser } from "./firebaseMethod";
-import { Link } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./login";
 
 function Signup() {
 
+  const navigate = useNavigate()
   const [user, SetUser] = useState({})
 
   let CreateUser = () => {
     SignupUser(user)
       .then((res) => {
-        console.log(res)
+        console.log(res,
+          'User Created Successfully')
+          navigate('/dashboard/*')
       })
       .catch((err) => {
         console.log(err, alert(err))
@@ -56,11 +59,22 @@ function Signup() {
             Signup
           </Button>
         </Box>
-        <Box className="text-center">
-
+        <Box className="p-2 m-2 text-center" >
+          <Button
+            
+            onClick={()=>{
+              navigate('/login')
+            }}
+            variant='outlined'
+          >
+            Login</Button>
         </Box>
       </Box>
     </Box>
+
+    <Routes>
+      <Route path="/login" element={<Login />} />
+    </Routes>
   </>
 
 
